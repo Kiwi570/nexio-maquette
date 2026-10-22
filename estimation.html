@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>NEXIO — Estimation</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Estimez le prix de la réparation de votre smartphone chez NEXIO : marque, modèle, panne et type de pièce.">
+<meta name="theme-color" content="#07090c">
+<meta property="og:type" content="website">
+<meta property="og:title" content="NEXIO — Estimation">
+<meta property="og:description" content="Estimez le prix de la réparation de votre smartphone chez NEXIO : marque, modèle, panne et type de pièce.">
+<meta property="og:image" content="assets/img/partage-reseaux-1600.webp">
+<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+<link rel="preload" href="assets/fonts/unbounded-var.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/inter-tight-var.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="assets/css/site.css">
+<script>(function(){var d=document.documentElement;d.classList.add('js');var c=null;try{c=localStorage.getItem('nexio-calm')}catch(e){}var calm=c===null?matchMedia('(prefers-reduced-motion: reduce)').matches:c==='1';if(calm){d.classList.add('calm')}else{d.classList.add('intro');setTimeout(function(){if(!window.__nexioReady)d.classList.remove('intro')},3500)}})();</script>
+</head>
+<body data-page="estimation">
+<a class="skip" href="#contenu">Aller au contenu</a>
+<div class="veil" aria-hidden="true"><span class="veil__line"></span><span class="veil__logo"><img src="assets/img/logo-nexio-clair.webp" alt="" width="552" height="125"></span></div>
+<header class="site-header">
+  <div class="site-header__in wrap">
+    <a class="brand" href="index.html" aria-label="NEXIO, accueil"><img src="assets/img/logo-nexio-clair.webp" alt="NEXIO" width="552" height="125"></a>
+    <nav class="nav" aria-label="Navigation principale"><a href="index.html#reparations">Réparations</a><a href="estimation.html" aria-current="page">Tarifs & estimation</a><a href="index.html#parcours">Comment ça marche</a><a href="index.html#infos">Infos pratiques</a></nav>
+    <div class="header-tools">
+      <span class="tel-pill" data-copy><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg><span data-fact="telephone"></span></span>
+      <button class="calm-btn" type="button" data-calm-toggle aria-pressed="false" title="Activer ou réduire les animations"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M3 12c2-4 4-4 6 0s4 4 6 0 4-4 6 0"/></svg><span>Animations <span class="calm-state">activées</span></span></button>
+      <a class="btn btn--sm" href="rendez-vous.html" data-magnetic>Prendre RDV</a>
+      <button class="menu-btn" type="button" aria-expanded="false" aria-controls="menu"><span></span><span></span><span class="sr">Menu</span></button>
+    </div>
+  </div>
+</header>
+<div class="menu" id="menu" hidden>
+  <nav aria-label="Menu mobile"><a class="menu__link" href="index.html#reparations">Réparations<small>01</small></a><a class="menu__link" href="estimation.html">Tarifs & estimation<small>02</small></a><a class="menu__link" href="index.html#parcours">Comment ça marche<small>03</small></a><a class="menu__link" href="index.html#infos">Infos pratiques<small>04</small></a><a class="menu__link" href="rendez-vous.html">Prendre rendez-vous<small>05</small></a></nav>
+  <div class="menu__foot">
+    <span class="tel-pill" style="display:inline-flex"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg><span data-fact="telephone"></span></span>
+    <button class="calm-btn" type="button" data-calm-toggle aria-pressed="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M3 12c2-4 4-4 6 0s4 4 6 0 4-4 6 0"/></svg><span>Animations <span class="calm-state">activées</span></span></button>
+  </div>
+</div>
+
+<main id="contenu">
+<section class="page-hero">
+  <figure class="slot slot--bg page-hero__bg" data-slot="estimation-ouverture-fond" data-slot-mobile="estimation-ouverture-fond-mobile" data-variant="studio" data-seed="14" data-alt="Fond de studio sombre éclairé en cyan" data-eager></figure>
+  <div class="wrap">
+    <p class="eyebrow">Tarifs &amp; estimation</p>
+    <h1 data-hero-title>Estimez votre réparation</h1>
+    <p class="lead">Choisissez votre téléphone et la panne : la pièce concernée s’allume, l’estimation se compose.</p>
+  </div>
+</section>
+
+<section class="sec" style="padding-top:0">
+  <div class="wrap est">
+    <div class="est__viz" data-lamp>
+      <figure class="slot slot--bg" data-slot="estimation-ouverture-fond" data-variant="studio" data-seed="15" data-alt=""></figure>
+      <canvas id="xray" role="img" aria-label="Téléphone en radiographie : la pièce concernée par la panne s’allume"></canvas>
+      <div class="xray-fallback" hidden><svg class="xray-svg xray-big" viewBox="0 0 300 400" role="img" aria-label="Schéma d’un téléphone, la pièce choisie s’allume"><rect class="xb" x="20" y="10" width="160" height="380" rx="26"/><path class="xg" d="M20 30 H180"/><path class="xg" d="M20 50 H180"/><path class="xg" d="M20 70 H180"/><path class="xg" d="M20 90 H180"/><path class="xg" d="M20 110 H180"/><path class="xg" d="M20 130 H180"/><path class="xg" d="M20 150 H180"/><path class="xg" d="M20 170 H180"/><path class="xg" d="M20 190 H180"/><path class="xg" d="M20 210 H180"/><path class="xg" d="M20 230 H180"/><path class="xg" d="M20 250 H180"/><path class="xg" d="M20 270 H180"/><path class="xg" d="M20 290 H180"/><path class="xg" d="M20 310 H180"/><path class="xg" d="M20 330 H180"/><path class="xg" d="M20 350 H180"/><path class="xg" d="M20 370 H180"/><path class="xg" d="M40 10 V390"/><path class="xg" d="M60 10 V390"/><path class="xg" d="M80 10 V390"/><path class="xg" d="M100 10 V390"/><path class="xg" d="M120 10 V390"/><path class="xg" d="M140 10 V390"/><path class="xg" d="M160 10 V390"/><g data-part="back"><rect class="xp" x="14" y="4" width="172" height="392" rx="30" style="fill:none;stroke-dasharray:4 5"/><path class="xp" d="M186 330 L206 40 H214" style="fill:none;stroke-dasharray:2 3"/><text class="lbl" x="218" y="43">Vitre arrière</text></g><g data-part="screen"><rect class="xp" x="28" y="18" width="144" height="364" rx="20" style="fill-opacity:.4"/><path class="xp" d="M172 200 L206 90 H214" style="fill:none;stroke-dasharray:2 3"/><text class="lbl" x="218" y="93">Écran</text></g><g data-part="board"><rect class="xp" x="40" y="38" width="120" height="82" rx="6"/><rect class="xp" x="104" y="56" width="26" height="26" rx="3"/><rect class="xp" x="136" y="92" width="16" height="16" rx="2"/><path class="xp" d="M160 60 L206 140 H214" style="fill:none;stroke-dasharray:2 3"/><text class="lbl" x="218" y="143">Carte mère</text></g><g data-part="camera"><circle class="xp" cx="66" cy="62" r="14"/><circle class="xp" cx="66" cy="98" r="14"/><path class="xp" d="M80 62 L206 190 H214" style="fill:none;stroke-dasharray:2 3"/><text class="lbl" x="218" y="193">Caméra</text></g><g data-part="battery"><rect class="xp" x="48" y="140" width="104" height="176" rx="12"/><path class="xp" d="M92 214 h16 M100 206 v16" style="fill:none"/><path class="xp" d="M152 240 L206 240 H214" style="fill:none;stroke-dasharray:2 3"/><text class="lbl" x="218" y="243">Batterie</text></g><g data-part="speaker"><rect class="xp" x="130" y="368" width="34" height="8" rx="4"/><rect class="xp" x="80" y="23" width="40" height="5" rx="2.5"/><path class="xp" d="M164 372 L206 290 H214" style="fill:none;stroke-dasharray:2 3"/><text class="lbl" x="218" y="293">Haut-parleur</text></g><g data-part="port"><rect class="xp" x="82" y="370" width="36" height="12" rx="6"/><path class="xp" d="M118 380 L206 340 H214" style="fill:none;stroke-dasharray:2 3"/><text class="lbl" x="218" y="343">Connecteur</text></g></svg></div>
+      <div class="est__label"><span>Pièce</span><b id="part-name">Choisissez une panne</b></div>
+      <span class="est__drag" id="drag-hint">Glissez pour tourner</span>
+    </div>
+    <form class="est__form" id="est" novalidate>
+      <div class="stepbox" id="s1">
+        <div class="stepbox__h"><span class="stepbox__n">01</span><h2>Votre marque</h2></div>
+        <div class="chips"><label class="chip"><input type="radio" name="marque" value="iphone" checked><span>iPhone</span></label><label class="chip"><input type="radio" name="marque" value="samsung"><span>Samsung</span></label><label class="chip"><input type="radio" name="marque" value="autre"><span>Autre marque</span></label></div>
+      </div>
+      <div class="stepbox" id="s2">
+        <div class="stepbox__h"><span class="stepbox__n">02</span><h2>Votre modèle</h2></div>
+        <div class="field" id="m-search-f"><label class="sr" for="m-search">Rechercher un modèle</label><input class="input" id="m-search" type="search" placeholder="Rechercher, ex. 13 Pro" autocomplete="off"></div>
+        <div class="models" id="models" role="radiogroup" aria-label="Modèles" data-lenis-prevent></div>
+        <div id="autre-f" hidden>
+          <div class="field"><span class="flabel">Marque</span><div class="chips" id="autres"></div></div>
+          <div class="field" style="margin-top:.9rem"><label for="m-libre">Modèle</label><input class="input" id="m-libre" type="text" placeholder="ex. Pixel 9" autocomplete="off"></div>
+        </div>
+        <p class="muted" style="font-size:.85rem">Liste indicative. Votre modèle n’y est pas ? Choisissez « Autre marque » et indiquez-le. <span class="todo">liste à valider</span></p>
+      </div>
+      <div class="stepbox" id="s3">
+        <div class="stepbox__h"><span class="stepbox__n">03</span><h2>La panne</h2></div>
+        <p class="muted" style="font-size:.9rem">Plusieurs choix possibles.</p>
+        <div class="chips"><label class="chip"><input type="checkbox" name="panne" value="ecran"><span>Écran ou vitre avant</span></label><label class="chip"><input type="checkbox" name="panne" value="batterie"><span>Batterie</span></label><label class="chip"><input type="checkbox" name="panne" value="charge"><span>Connecteur de charge</span></label><label class="chip"><input type="checkbox" name="panne" value="camera"><span>Caméra</span></label><label class="chip"><input type="checkbox" name="panne" value="dos"><span>Vitre arrière</span></label><label class="chip"><input type="checkbox" name="panne" value="son"><span>Haut-parleur ou micro</span></label><label class="chip"><input type="checkbox" name="panne" value="eau"><span>Contact avec l’eau</span></label><label class="chip"><input type="checkbox" name="panne" value="diag"><span>Autre panne / diagnostic</span></label></div>
+        <p class="muted" id="panne-desc" style="font-size:.9rem;min-height:1.5em"></p>
+      </div>
+      <div class="stepbox" id="s4">
+        <div class="stepbox__h"><span class="stepbox__n">04</span><h2>Vos pièces</h2></div>
+        <div class="chips"><label class="chip"><input type="radio" name="pieces" value="neuve"><span>Pièce neuve</span></label><label class="chip"><input type="radio" name="pieces" value="circulaire"><span>Pièce issue de l’économie circulaire</span></label><label class="chip"><input type="radio" name="pieces" value="conseil" checked><span>Je ne sais pas encore</span></label></div>
+        <p class="muted" style="font-size:.88rem">Pièces d’occasion ou reconditionnées selon disponibilité. Le prix et le délai de chaque option sont indiqués avant votre accord.</p>
+      </div>
+      <div class="ticket" id="ticket" aria-live="polite">
+        <div class="ticket__h"><span>Estimation</span><span id="t-date"></span></div>
+        <div class="ticket__b" id="t-rows"></div>
+        <div class="ticket__f">
+          <p id="t-note">Estimation indicative, confirmée au diagnostic.</p>
+          <div class="cta-row"><a class="btn" id="t-rdv" href="rendez-vous.html" aria-disabled="true" style="--bg:#07090c;--c:#e7eef1">Réserver un créneau <svg class="arr" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10h12M11 5l5 5-5 5"/></svg></a></div>
+        </div>
+      </div>
+    </form>
+  </div>
+</section>
+
+<section class="sec" style="padding-top:0">
+  <div class="wrap">
+    <div class="band" data-lamp>
+      <figure class="slot " data-slot="estimation-composants" data-variant="parts" data-seed="16" data-alt="Composants d’un smartphone démonté, alignés sur fond noir"></figure>
+      <div><p class="eyebrow">Ce qui fait le prix</p><p style="margin-top:.8rem">Le modèle, la pièce à remplacer et le type de pièce choisi. Grille tarifaire NEXIO : <span class="todo">à compléter</span></p></div>
+    </div>
+  </div>
+</section>
+
+<section class="final">
+  <figure class="slot slot--bg final__bg" data-slot="accueil-final-ecran" data-variant="edge" data-seed="9" data-alt="Bord d’un écran de téléphone traversé par un filet de lumière"></figure>
+  <span class="glide" aria-hidden="true"></span>
+  <div class="wrap final__in">
+    <p class="eyebrow">Rendez-vous</p>
+    <h2 data-reveal="glitch">Votre estimation est prête ? Réservez votre créneau.</h2>
+    <div class="cta-row">
+      <a class="btn" href="rendez-vous.html" data-magnetic>Je prends rendez-vous <svg class="arr" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10h12M11 5l5 5-5 5"/></svg></a>
+      <a class="btn btn--ghost" href="estimation.html" data-magnetic>Estimer ma réparation</a>
+    </div>
+  </div>
+</section>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="foot__grid">
+      <div class="foot__brand"><img src="assets/img/logo-nexio-clair.webp" alt="NEXIO" width="552" height="125" loading="lazy"><p>Réparation de smartphones iPhone, Samsung et multi-marques.</p></div>
+      <div class="foot__col"><h3>Pages</h3><ul>
+        <li><a class="link" href="index.html">Accueil</a></li>
+        <li><a class="link" href="index.html#reparations">Réparations</a></li>
+        <li><a class="link" href="estimation.html">Tarifs &amp; estimation</a></li>
+        <li><a class="link" href="rendez-vous.html">Prendre rendez-vous</a></li>
+      </ul></div>
+      <div class="foot__col"><h3>Contact</h3><ul>
+        <li>Téléphone : <span data-fact="telephone"></span></li>
+        <li>E-mail : <span data-fact="email"></span></li>
+        <li>Adresse : <span data-fact="adresse"></span></li>
+      </ul></div>
+      <div class="foot__col"><h3>Informations</h3><ul>
+        <li><a class="link" href="mentions-legales.html">Mentions légales</a></li>
+        <li><a class="link" href="mentions-legales.html#confidentialite">Confidentialité</a></li>
+        <li><a class="link" href="index.html#pieces">Pièces issues de l’économie circulaire</a></li>
+      </ul></div>
+    </div>
+    <div class="giant" aria-hidden="true">nexio</div>
+    <div class="foot__bottom">
+      <span>© 2026 NEXIO · Maquette de présentation</span>
+      <button class="calm-btn" type="button" data-calm-toggle aria-pressed="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M3 12c2-4 4-4 6 0s4 4 6 0 4-4 6 0"/></svg><span>Animations <span class="calm-state">activées</span></span></button>
+    </div>
+  </div>
+</footer>
+<script src="assets/vendor/gsap/gsap.min.js" defer></script>
+<script src="assets/vendor/gsap/ScrollTrigger.min.js" defer></script>
+<script src="assets/vendor/gsap/SplitText.min.js" defer></script>
+<script type="module" src="assets/js/estimation.js"></script>
+</body>
+</html>
