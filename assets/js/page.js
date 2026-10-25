@@ -1,7 +1,6 @@
 /* NEXIO — pages simples (mentions légales) */
 import { gsap, boot, calm, veilOut, glitchIn } from './main.js';
 
-window.__nexioReady = true;
 boot();
 const html = document.documentElement;
 if (calm) html.classList.remove('intro');
@@ -16,3 +15,6 @@ else {
     gsap.fromTo(p, { strokeDasharray: l, strokeDashoffset: l }, { strokeDashoffset: 0, duration: 1.6, delay: 0.4 + i * 0.04, ease: 'power2.out' });
   });
 }
+
+// tout le script de page s'est exécuté : le filet de sécurité du voile n'est plus nécessaire
+window.__nexioReady = true;

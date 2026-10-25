@@ -19,7 +19,8 @@ Tant qu'une valeur vaut `null`, le site affiche une pastille « à compléter »
 ## Images
 
 Chaque emplacement charge `assets/img/<nom>-800.webp` et `assets/img/<nom>-1600.webp`.
-Si le fichier n'existe pas, un visuel provisoire est dessiné en code.
+Ajouter le nom de chaque visuel livré dans la liste `DISPONIBLES` de `assets/js/slots.js` :
+les autres emplacements gardent leur visuel provisoire dessiné en code, sans requête en erreur.
 Les noms attendus sont ceux du document d'images (Grok ou ChatGPT).
 
 ## Bibliothèques (hébergées avec le site)

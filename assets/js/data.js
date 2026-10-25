@@ -33,7 +33,7 @@ export const PANNES = [
   { id: 'dos',      label: 'Vitre arrière',         court: 'Dos',        part: 'back',    desc: 'Dos en verre fêlé ou éclaté.' },
   { id: 'son',      label: 'Haut-parleur ou micro', court: 'Son',        part: 'speaker', desc: 'Son grésillant, interlocuteur qui ne vous entend plus.' },
   { id: 'eau',      label: 'Contact avec l’eau',    court: 'Eau',        part: 'board',   desc: 'Téléphone tombé dans l’eau ou exposé à l’humidité.' },
-  { id: 'diag',     label: 'Autre panne / diagnostic', court: 'Diagnostic', part: 'board', desc: 'Vous ne savez pas d’où vient le problème : on cherche avec vous.' },
+  { id: 'diag',     label: 'Autre panne / diagnostic', court: 'Diagnostic', part: 'board', desc: 'Vous ne savez pas d’où vient le problème : on cherche avec vous.' },
 ];
 
 /* Modèles — liste indicative, à valider avec NEXIO. */
