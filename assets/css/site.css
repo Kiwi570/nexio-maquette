@@ -18,7 +18,7 @@
   --line-2: rgba(150, 210, 224, 0.22);
   --fg: #e7eef1;
   --fg-2: #a2b0b9;
-  --fg-3: #6c7a84;
+  --fg-3: #7f8d97;
   --volt: #39e9f7;
   --volt-2: #18b3c4;
   --volt-ink: #021f24;
@@ -318,17 +318,18 @@ html:not(.calm) .is-live .v-scan { animation: scan 2.4s linear infinite; }
 .journey__hud { display: none; }
 .journey__end { display: grid; gap: .8rem; align-content: center; justify-items: start; }
 .plug { width: 120px; }
+/* parcours horizontal épinglé : seulement avec les animations (en mode calme ou sans JS, la version verticale reste lisible) */
 @media (min-width: 900px) {
-  .journey__pin { height: 100svh; }
-  .journey__track { display: flex; gap: clamp(3rem, 6vw, 7rem); align-items: center; height: 100%; width: max-content; padding: 0 30vw 0 var(--gl); will-change: transform; }
-  .step { width: clamp(260px, 25vw, 380px); flex: none; position: relative; z-index: 1; }
-  .step:nth-child(even) { margin-top: 9vh; }
-  .step:nth-child(odd) { margin-bottom: 9vh; }
-  .step__img { max-width: none; }
-  .journey__end { width: 320px; flex: none; }
-  .cable { left: 0; top: auto; bottom: 1.5vh; width: 100%; height: 120px; z-index: 0; }
-  .journey__hud { display: flex; position: absolute; right: var(--gr); top: 104px; z-index: 3; align-items: center; gap: .8rem; padding: .6rem 1rem; border-radius: 999px; background: rgba(7, 9, 12, .7); box-shadow: inset 0 0 0 1px var(--line); backdrop-filter: blur(10px); font-size: .8rem; color: var(--fg-2); }
-  .journey__hud b { font-family: var(--display); font-weight: 500; color: var(--volt); font-variant-numeric: tabular-nums; min-width: 4ch; text-align: right; }
+  html.js:not(.calm) .journey__pin { height: 100svh; }
+  html.js:not(.calm) .journey__track { display: flex; gap: clamp(3rem, 6vw, 7rem); align-items: center; height: 100%; width: max-content; padding: 0 30vw 0 var(--gl); will-change: transform; }
+  html.js:not(.calm) .step { width: clamp(260px, 25vw, 380px); flex: none; position: relative; z-index: 1; }
+  html.js:not(.calm) .step:nth-child(even) { margin-top: 9vh; }
+  html.js:not(.calm) .step:nth-child(odd) { margin-bottom: 9vh; }
+  html.js:not(.calm) .step__img { max-width: none; }
+  html.js:not(.calm) .journey__end { width: 320px; flex: none; }
+  html.js:not(.calm) .cable { left: 0; top: auto; bottom: 1.5vh; width: 100%; height: 120px; z-index: 0; }
+  html.js:not(.calm) .journey__hud { display: flex; position: absolute; right: var(--gr); top: 104px; z-index: 3; align-items: center; gap: .8rem; padding: .6rem 1rem; border-radius: 999px; background: rgba(7, 9, 12, .7); box-shadow: inset 0 0 0 1px var(--line); backdrop-filter: blur(10px); font-size: .8rem; color: var(--fg-2); }
+  html.js:not(.calm) .journey__hud b { font-family: var(--display); font-weight: 500; color: var(--volt); font-variant-numeric: tabular-nums; min-width: 4ch; text-align: right; }
 }
 html.calm .journey__pin { height: auto; }
 .batt-mini { width: 34px; height: 16px; border-radius: 4px; box-shadow: inset 0 0 0 1.5px var(--fg-3); position: relative; padding: 2px; }
@@ -491,7 +492,7 @@ html:not(.calm) .glide { animation: glide 5s linear infinite; }
 .trow b { text-align: right; }
 .trow.total { border-bottom: 0; padding-top: .9rem; font-size: 1.1rem; }
 .trow.total b { font-family: var(--display); font-weight: 600; }
-.ticket .todo { color: #a5600f; border-color: rgba(165, 96, 15, .55); }
+.ticket .todo { color: #8f520c; border-color: rgba(143, 82, 12, .55); }
 .ticket__f { padding: 0 1.3rem 1.3rem; font-size: .82rem; color: #4d5963; display: grid; gap: .8rem; }
 .ticket::before, .ticket::after { content: ""; position: absolute; top: 52px; width: 18px; height: 18px; border-radius: 50%; background: var(--ink-1); }
 .ticket::before { left: -9px; } .ticket::after { right: -9px; }
@@ -576,3 +577,20 @@ html.calm .slot__inner { inset: 0; transform: none !important; }
 .xray-big { width: 100%; height: 82%; }
 .est__viz .slot__tag { display: none; }
 html.calm .hero__hint { display: none; }
+
+/* ===== Finitions (audit) ===== */
+/* aucun défilement horizontal : les volets animés restent dans la page */
+main { overflow-x: clip; }
+/* menu ouvert : la page ne défile plus, même sans Lenis (mode calme) ; le menu défile en paysage */
+html.menu-open { overflow: hidden; }
+.menu { overscroll-behavior: contain; }
+@media (max-height: 520px) { .menu { padding-top: calc(env(safe-area-inset-top, 0px) + 80px); gap: 1.2rem; } .menu__link { font-size: clamp(1.4rem, 5vw, 2rem); } }
+/* champs à 16 px minimum : pas de zoom automatique sur iOS */
+.input, select.input, textarea.input { font-size: max(16px, 1rem); }
+/* en-tête masqué : il réapparaît dès qu'il reçoit le focus */
+.site-header:focus-within { transform: none; }
+/* cibles tactiles : 44 px */
+.btn--sm, .calm-btn, .tel-pill { min-height: 44px; }
+.chip span, .models .chip span { min-height: 44px; }
+.copy { min-height: 44px; min-width: 44px; }
+@media (pointer: coarse) { .foot__col a { display: inline-block; padding-block: .7rem; } .brand { position: relative; } .brand::after { content: ""; position: absolute; inset: -12px -8px; } }

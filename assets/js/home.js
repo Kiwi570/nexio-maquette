@@ -1,9 +1,8 @@
 /* NEXIO — accueil */
-import { gsap, ScrollTrigger, boot, calm, fine, veilOut, glitchIn } from './main.js';
+import { gsap, ScrollTrigger, boot, calm, fine, veilOut, glitchIn, scrollToEl } from './main.js';
 import { MARQUES, AUTRES_MARQUES, PANNES, prix, euros } from './data.js';
 import { makeCracks, crackPaths } from './cracks.js';
 
-window.__nexioReady = true;
 boot();
 
 const $ = (s, r = document) => r.querySelector(s);
@@ -67,7 +66,8 @@ function buildSvgPhone(box) {
 function setMeter() {
   const wave = phone ? phone.state.wave : 0;
   const v = Math.round(Math.min(1, Math.max(painted * 1.6, wave)) * 100);
-  meter.textContent = v + ' %';
+  const txt = v + ' %';
+  if (meter.textContent !== txt) meter.textContent = txt;
 }
 
 async function intro() {
@@ -123,6 +123,9 @@ async function intro() {
   // l'épinglage de l'ouverture est créé après les autres : on remet l'ordre
   ScrollTrigger.sort();
   ScrollTrigger.refresh();
+  let cible = null;
+  try { cible = location.hash.length > 1 ? document.getElementById(decodeURIComponent(location.hash.slice(1))) : null; } catch (e) { /* ancre invalide */ }
+  if (cible) scrollToEl(cible);
 }
 intro();
 
@@ -132,7 +135,7 @@ intro();
 (function manifesto() {
   const el = $('[data-words]');
   if (!el || calm) return;
-  const split = new window.SplitText(el, { type: 'words', wordsClass: 'w' });
+  const split = new window.SplitText(el, { type: 'words', wordsClass: 'w', aria: 'none' }); // découpage en mots : le texte reste lisible tel quel
   split.words.forEach(w => { if (w.closest('.hl-g')) w.classList.add('hl'); });
   gsap.to(split.words, {
     opacity: 1, stagger: 0.08, ease: 'none',
@@ -198,8 +201,7 @@ intro();
   }
 
   if (calm) {
-    const v = () => (matchMedia('(min-width: 900px)').matches ? cableH() : cableV());
-    v(); setCharge(1); addEventListener('resize', v);
+    cableV(); setCharge(1); addEventListener('resize', cableV);
     return;
   }
   const mm = gsap.matchMedia();
@@ -263,7 +265,7 @@ intro();
     $$('[data-part]', svg).forEach(g => g.classList.toggle('on', g.dataset.part === p.part));
     const v = prix(modele, panne, 'conseil');
     out.innerHTML = v === null ? '<span class="todo">à compléter</span>' : 'à partir de ' + euros(v);
-    note.textContent = v === null ? `${p.label} · ${modele} : les tarifs NEXIO s’afficheront ici dès qu’ils seront renseignés.` : `${p.label} · ${modele}. Estimation indicative, confirmée au diagnostic.`;
+    note.textContent = v === null ? `${p.label} · ${modele} : les tarifs NEXIO s’afficheront ici dès qu’ils seront renseignés.` : `${p.label} · ${modele}. Estimation indicative, confirmée au diagnostic.`;
     const qs = new URLSearchParams({ marque, modele, panne }).toString();
     go.href = 'estimation.html?' + qs; rdv.href = 'rendez-vous.html?' + qs;
     if (!calm) gsap.fromTo(out, { opacity: 0.2, y: 6 }, { opacity: 1, y: 0, duration: 0.5, ease: 'power3.out' });
@@ -299,3 +301,6 @@ intro();
     gsap.fromTo(p, { strokeDasharray: l, strokeDashoffset: l }, { strokeDashoffset: 0, duration: 2, ease: 'power2.inOut', scrollTrigger: { trigger: p.closest('svg'), start: 'top 80%', once: true } });
   });
 })();
+
+// tout le script de page s'est exécuté : le filet de sécurité du voile n'est plus nécessaire
+window.__nexioReady = true;

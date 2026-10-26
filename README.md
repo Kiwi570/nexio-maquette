@@ -19,8 +19,9 @@ Tant qu'une valeur vaut `null`, le site affiche une pastille « à compléter »
 ## Images
 
 Visuels générés avec ChatGPT (aucune personne réelle, aucun logo), convertis en WebP
-dans `assets/img/` en deux tailles (`-800` et `-1600`). Seule image d'origine du client : le logo.
-Si un fichier manque, l'emplacement affiche un visuel provisoire dessiné en code.
+dans `assets/img/` en deux tailles (`<nom>-800.webp` et `<nom>-1600.webp`). Seule image d'origine du client : le logo.
+Chaque nom de visuel livré est déclaré dans la liste `DISPONIBLES` de `assets/js/slots.js` :
+un emplacement absent de la liste garde son visuel provisoire dessiné en code, sans requête en erreur.
 
 ## Bibliothèques (hébergées avec le site)
 
