@@ -2,6 +2,7 @@
 import { gsap, boot, calm, fine, veilOut, glitchIn } from './main.js';
 import { NEXIO, MARQUES, AUTRES_MARQUES, PANNES, PIECES, prix, total, euros } from './data.js';
 
+window.__nexioReady = true;
 boot();
 
 const $ = (s, r = document) => r.querySelector(s);
@@ -16,7 +17,7 @@ const st = { marque: 'iphone', modele: null, autre: null, libre: '', pannes: [],
 /* ---------- Pré-remplissage depuis l'URL ---------- */
 const q = new URLSearchParams(location.search);
 if (q.get('marque') && MARQUES.some(m => m.id === q.get('marque'))) st.marque = q.get('marque');
-if (q.get('modele') && (st.marque === 'autre' || MARQUES.some(m => m.modeles.includes(q.get('modele'))))) st.modele = q.get('modele');
+if (q.get('modele')) st.modele = q.get('modele');
 const fromUrl = (q.get('pannes') || q.get('panne') || '').split(',').filter(id => PANNES.some(p => p.id === id));
 st.pannes = fromUrl;
 if (q.get('pieces') && PIECES.some(p => p.id === q.get('pieces'))) st.pieces = q.get('pieces');
@@ -42,7 +43,7 @@ function renderModels() {
   const shown = list.filter(n => !term || n.toLowerCase().includes(term));
   models.innerHTML = shown.length
     ? shown.map(n => `<label class="chip"><input type="radio" name="modele" value="${n}"${st.modele === n ? ' checked' : ''}><span>${n}</span></label>`).join('')
-    : '<p class="muted" style="font-size:.9rem">Aucun modèle trouvé. Choisissez « Autre marque » pour l’indiquer.</p>';
+    : '<p class="muted" style="font-size:.9rem">Aucun modèle trouvé. Choisissez « Autre marque » pour l’indiquer.</p>';
 }
 
 /* ---------- Radiographie ---------- */
@@ -74,7 +75,6 @@ function modeleLabel() {
   if (st.marque === 'autre') return st.autre ? `${st.autre}${st.libre ? ' ' + st.libre : ''}` : null;
   return st.modele;
 }
-const esc = s => String(s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 function renderTicket(animate = true) {
   const modele = modeleLabel();
   const pieceLabel = PIECES.find(p => p.id === st.pieces).label;
@@ -82,7 +82,7 @@ function renderTicket(animate = true) {
   if (!modele || !st.pannes.length) {
     h = `<div class="trow"><span>${!modele ? 'Choisissez votre modèle' : 'Choisissez au moins une panne'}</span><b>—</b></div>`;
   } else {
-    h += `<div class="trow"><span>Appareil</span><b>${esc(modele)}</b></div>`;
+    h += `<div class="trow"><span>Appareil</span><b>${modele}</b></div>`;
     st.pannes.forEach(id => {
       const p = PANNES.find(x => x.id === id);
       const v = prix(modele, id, st.pieces);
@@ -148,6 +148,3 @@ renderTicket(false);
   const late = (performance.now() - t0) / 1000;
   if (phone) gsap.fromTo(phone.state, { rise: 0 }, { rise: 1, duration: 1.4, ease: 'expo.out', delay: Math.max(0, 0.6 - late) });
 })();
-
-// tout le script de page s'est exécuté : le filet de sécurité du voile n'est plus nécessaire
-window.__nexioReady = true;

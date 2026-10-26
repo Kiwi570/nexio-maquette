@@ -2,6 +2,7 @@
 import { gsap, boot, calm, veilOut, glitchIn, scrollToEl } from './main.js';
 import { NEXIO, JOURS, MARQUES, PANNES, PIECES, creneaux } from './data.js';
 
+window.__nexioReady = true;
 boot();
 
 const $ = (s, r = document) => r.querySelector(s);
@@ -28,8 +29,8 @@ if (q.get('modele')) {
   if (selMarque.value === 'autre') $('#r-libre').value = q.get('modele');
   else if ([...selModele.options].some(o => o.value === q.get('modele'))) selModele.value = q.get('modele');
 }
-(q.get('pannes') || q.get('panne') || '').split(',').filter(id => PANNES.some(p => p.id === id)).forEach(id => { const i = form.querySelector(`[name=r-panne][value="${id}"]`); if (i) i.checked = true; });
-if (PIECES.some(p => p.id === q.get('pieces')) && form.querySelector(`[name=r-pieces][value="${q.get('pieces')}"]`)) form.querySelector(`[name=r-pieces][value="${q.get('pieces')}"]`).checked = true;
+(q.get('pannes') || q.get('panne') || '').split(',').forEach(id => { const i = form.querySelector(`[name=r-panne][value="${id}"]`); if (i) i.checked = true; });
+if (PIECES.some(p => p.id === q.get('pieces'))) form.querySelector(`[name=r-pieces][value="${q.get('pieces')}"]`).checked = true;
 
 /* ---------- Créneaux ---------- */
 const daysEl = $('#days'), slotsEl = $('#slots');
@@ -127,7 +128,7 @@ function go(n) {
   if (n === 5) { const v = data(); $('#done-txt').textContent = `${v.prenom}, votre demande pour ${v.modele} (${v.pannes.join(', ').toLowerCase()}) le ${v.jour} à ${v.heure} est prête à être envoyée à NEXIO.`; }
   const dir = n > st.step ? 1 : -1;
   st.step = n;
-  $$('.progress li').forEach((li, i) => { li.classList.toggle('on', i < Math.min(n, 4)); if (i === Math.min(n, 4) - 1) li.setAttribute('aria-current', 'step'); else li.removeAttribute('aria-current'); });
+  $$('.progress li').forEach((li, i) => li.classList.toggle('on', i < Math.min(n, 4)));
   const show = () => {
     cur.hidden = true; next.hidden = false;
     if (!calm) gsap.fromTo(next, { x: 40 * dir, opacity: 0 }, { x: 0, opacity: 1, duration: 0.6, ease: 'expo.out' });
@@ -161,6 +162,3 @@ $$('#f-prenom, #f-nom, #f-tel, #f-mail').forEach(i => i.addEventListener('blur',
   let k = 0;
   setInterval(() => { ticks.forEach(t => t.classList.remove('on')); for (let i = 0; i < 4; i++) ticks[(k + i) % ticks.length].classList.add('on'); k = (k + 1) % ticks.length; }, 900);
 })();
-
-// tout le script de page s'est exécuté : le filet de sécurité du voile n'est plus nécessaire
-window.__nexioReady = true;

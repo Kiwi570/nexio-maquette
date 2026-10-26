@@ -63,14 +63,7 @@ export function fillFacts(root = document) {
       el.closest('[data-copy]')?.querySelector('.copy')?.setAttribute('disabled', '');
       return;
     }
-    const txt = Array.isArray(v) ? v.join(', ') : String(v);
-    const href = k === 'telephone' ? 'tel:' + txt.replace(/[^\d+]/g, '') : k === 'email' ? 'mailto:' + txt : k === 'avisGoogle' ? txt : null;
-    if (href && !el.closest('a')) {
-      const a = document.createElement('a');
-      a.className = 'link'; a.href = href; a.textContent = k === 'avisGoogle' ? 'Voir les avis' : txt;
-      if (k === 'avisGoogle') { a.target = '_blank'; a.rel = 'noopener'; }
-      el.replaceChildren(a);
-    } else el.textContent = txt;
+    el.textContent = Array.isArray(v) ? v.join(', ') : String(v);
   });
   root.querySelectorAll('[data-horaires]').forEach(el => {
     if (!NEXIO.horaires) {
@@ -125,16 +118,7 @@ function header() {
   const btn = h.querySelector('.menu-btn');
   const panel = document.getElementById('menu');
   btn?.addEventListener('click', () => (menuOpen ? closeMenu() : openMenu()));
-  document.addEventListener('keydown', e => {
-    if (!menuOpen) return;
-    if (e.key === 'Escape') { closeMenu(); return; }
-    if (e.key !== 'Tab') return;
-    // le focus reste entre le bouton du menu et le contenu du menu
-    const items = [btn, ...panel.querySelectorAll('a[href], button:not([disabled])')];
-    const i = items.indexOf(document.activeElement);
-    if (e.shiftKey && i <= 0) { e.preventDefault(); items[items.length - 1].focus(); }
-    else if (!e.shiftKey && i === items.length - 1) { e.preventDefault(); items[0].focus(); }
-  });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape' && menuOpen) closeMenu(); });
   panel?.querySelectorAll('a').forEach(a => a.addEventListener('click', () => closeMenu()));
 }
 function openMenu() {
@@ -142,8 +126,6 @@ function openMenu() {
   if (!panel) return;
   menuOpen = true;
   panel.hidden = false;
-  panel.setAttribute('data-lenis-prevent', '');
-  document.querySelectorAll('body > main, body > footer, body > .skip').forEach(el => { el.inert = true; });
   btn.setAttribute('aria-expanded', 'true');
   html.classList.add('menu-open');
   lenis?.stop();
@@ -157,7 +139,6 @@ function closeMenu() {
   if (!menuOpen) return;
   const btn = document.querySelector('.menu-btn'), panel = document.getElementById('menu');
   menuOpen = false;
-  document.querySelectorAll('body > main, body > footer, body > .skip').forEach(el => { el.inert = false; });
   btn.setAttribute('aria-expanded', 'false');
   html.classList.remove('menu-open');
   lenis?.start();
@@ -294,11 +275,6 @@ function transitions() {
     if (!a || e.defaultPrevented || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || a.target === '_blank') return;
     const href = a.getAttribute('href');
     if (!/\.html(\?|$)/.test(href) || /^https?:/.test(href)) return;
-    const norm = p => p.replace(/\/index(\.html)?$/, '/').replace(/\.html$/, '');
-    const u = new URL(a.href, location.href);
-    if (norm(u.pathname) === norm(location.pathname) && u.search === location.search) {
-      e.preventDefault(); closeMenu(); scrollToEl(document.getElementById('contenu') || document.body); return;
-    }
     e.preventDefault();
     gsap.timeline({ onComplete: () => { location.href = href; } })
       .set(veil, { yPercent: -100, visibility: 'visible' })
@@ -311,7 +287,7 @@ export function veilOut() {
   if (calm) { gsap.set(veil, { yPercent: -100 }); return gsap.timeline(); }
   return gsap.timeline()
     .set(veil, { yPercent: 0, visibility: 'visible' })
-    .fromTo(veil.querySelector('.veil__line'), { y: 0 }, { y: () => innerHeight, duration: 0.55, ease: 'power2.inOut' }, 0)
+    .fromTo(veil.querySelector('.veil__line'), { top: '0%' }, { top: '100%', duration: 0.55, ease: 'power2.inOut' }, 0)
     .to(veil, { yPercent: 100, duration: 0.7, ease: 'expo.inOut' }, 0.15)
     .set(veil, { visibility: 'hidden' });
 }

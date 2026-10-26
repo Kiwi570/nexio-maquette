@@ -4,18 +4,17 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>NEXIO — Rendez-vous</title>
-<meta name="description" content="Prenez rendez-vous chez NEXIO pour la réparation de votre smartphone&nbsp;: choisissez votre panne et votre créneau en ligne.">
-<meta name="robots" content="noindex, nofollow">
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Prenez rendez-vous chez NEXIO pour la réparation de votre smartphone : choisissez votre panne et votre créneau en ligne.">
 <meta name="theme-color" content="#07090c">
 <meta property="og:type" content="website">
 <meta property="og:title" content="NEXIO — Rendez-vous">
-<meta property="og:description" content="Prenez rendez-vous chez NEXIO pour la réparation de votre smartphone&nbsp;: choisissez votre panne et votre créneau en ligne.">
-<meta property="og:image" content="https://nexio-maquette.vercel.app/assets/img/partage-nexio.jpg">
+<meta property="og:description" content="Prenez rendez-vous chez NEXIO pour la réparation de votre smartphone : choisissez votre panne et votre créneau en ligne.">
+<meta property="og:image" content="https://nexio-maquette.vercel.app/assets/img/partage-reseaux.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:url" content="https://nexio-maquette.vercel.app/rendez-vous">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
-<link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
 <link rel="preload" href="assets/fonts/unbounded-var.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/inter-tight-var.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="assets/css/site.css">
@@ -67,17 +66,17 @@
           <div class="field" id="r-modele-f"><label for="r-modele">Modèle</label><select class="input" id="r-modele" name="modele"></select></div>
           <div class="field" id="r-libre-f" hidden><label for="r-libre">Marque et modèle</label><input class="input" id="r-libre" name="libre" type="text" placeholder="ex. Pixel 9" autocomplete="off"></div>
         </div>
-        <fieldset><legend>Panne (plusieurs choix possibles)</legend><div class="chips"><label class="chip"><input type="checkbox" name="r-panne" value="ecran"><span>Écran ou vitre avant</span></label><label class="chip"><input type="checkbox" name="r-panne" value="batterie"><span>Batterie</span></label><label class="chip"><input type="checkbox" name="r-panne" value="charge"><span>Connecteur de charge</span></label><label class="chip"><input type="checkbox" name="r-panne" value="camera"><span>Caméra</span></label><label class="chip"><input type="checkbox" name="r-panne" value="dos"><span>Vitre arrière</span></label><label class="chip"><input type="checkbox" name="r-panne" value="son"><span>Haut-parleur ou micro</span></label><label class="chip"><input type="checkbox" name="r-panne" value="eau"><span>Contact avec l’eau</span></label><label class="chip"><input type="checkbox" name="r-panne" value="diag"><span>Autre panne / diagnostic</span></label></div><span class="err" id="e-panne" role="alert" hidden>Choisissez au moins une panne.</span></fieldset>
+        <fieldset><legend>Panne (plusieurs choix possibles)</legend><div class="chips"><label class="chip"><input type="checkbox" name="r-panne" value="ecran"><span>Écran ou vitre avant</span></label><label class="chip"><input type="checkbox" name="r-panne" value="batterie"><span>Batterie</span></label><label class="chip"><input type="checkbox" name="r-panne" value="charge"><span>Connecteur de charge</span></label><label class="chip"><input type="checkbox" name="r-panne" value="camera"><span>Caméra</span></label><label class="chip"><input type="checkbox" name="r-panne" value="dos"><span>Vitre arrière</span></label><label class="chip"><input type="checkbox" name="r-panne" value="son"><span>Haut-parleur ou micro</span></label><label class="chip"><input type="checkbox" name="r-panne" value="eau"><span>Contact avec l’eau</span></label><label class="chip"><input type="checkbox" name="r-panne" value="diag"><span>Autre panne / diagnostic</span></label></div><span class="err" id="e-panne" hidden>Choisissez au moins une panne.</span></fieldset>
         <fieldset><legend>Vos pièces</legend><div class="chips"><label class="chip"><input type="radio" name="r-pieces" value="neuve"><span>Pièce neuve</span></label><label class="chip"><input type="radio" name="r-pieces" value="circulaire"><span>Pièce issue de l’économie circulaire</span></label><label class="chip"><input type="radio" name="r-pieces" value="conseil" checked><span>Je ne sais pas encore</span></label></div></fieldset>
         <div class="panel__nav"><span></span><button class="btn" type="button" data-next>Choisir un créneau <svg class="arr" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10h12M11 5l5 5-5 5"/></svg></button></div>
       </div>
 
       <div class="panel" data-step="2" hidden>
         <h2>Votre créneau</h2>
-        <p class="sim" id="demo-note">Créneaux de démonstration&nbsp;: les horaires de NEXIO sont à compléter.</p>
+        <p class="sim" id="demo-note">Créneaux de démonstration : les horaires de NEXIO sont à compléter.</p>
         <div class="days" id="days" role="group" aria-label="Jours" data-lenis-prevent></div>
         <div class="slots" id="slots" role="group" aria-label="Heures"></div>
-        <span class="err" id="e-slot" role="alert" hidden>Choisissez un jour et une heure.</span>
+        <span class="err" id="e-slot" hidden>Choisissez un jour et une heure.</span>
         <div class="panel__nav"><button class="btn btn--ghost" type="button" data-prev>Retour</button><button class="btn" type="button" data-next>Mes coordonnées <svg class="arr" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10h12M11 5l5 5-5 5"/></svg></button></div>
       </div>
 
@@ -89,16 +88,16 @@
           <div class="field"><label for="f-tel">Téléphone</label><input class="input" id="f-tel" name="tel" type="tel" autocomplete="tel" inputmode="tel" required placeholder="06 12 34 56 78"><span class="err" hidden>Indiquez un numéro à 10 chiffres.</span></div>
           <div class="field"><label for="f-mail">E-mail (facultatif)</label><input class="input" id="f-mail" name="mail" type="email" autocomplete="email"><span class="err" hidden>Vérifiez l’adresse e-mail.</span></div>
         </div>
-        <div class="field"><label for="f-msg">Précisions (facultatif)</label><textarea data-lenis-prevent class="input" id="f-msg" name="msg" placeholder="Ce qui s’est passé, depuis quand…"></textarea></div>
-        <label class="check"><input type="checkbox" id="f-ok" required aria-describedby="e-ok"><span>J’accepte que mes informations servent à traiter ma demande de rendez-vous. Politique de confidentialité&nbsp;: <span class="todo">à compléter</span></span></label>
-        <span class="err" id="e-ok" role="alert" hidden>Cochez la case pour continuer.</span>
+        <div class="field"><label for="f-msg">Précisions (facultatif)</label><textarea class="input" id="f-msg" name="msg" placeholder="Ce qui s’est passé, depuis quand…"></textarea></div>
+        <label class="check"><input type="checkbox" id="f-ok" required><span>J’accepte que mes informations servent à traiter ma demande de rendez-vous. Politique de confidentialité : <span class="todo">à compléter</span></span></label>
+        <span class="err" id="e-ok" hidden>Cochez la case pour continuer.</span>
         <div class="panel__nav"><button class="btn btn--ghost" type="button" data-prev>Retour</button><button class="btn" type="button" data-next>Vérifier <svg class="arr" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10h12M11 5l5 5-5 5"/></svg></button></div>
       </div>
 
       <div class="panel" data-step="4" hidden>
         <h2>Récapitulatif</h2>
         <div class="recap" id="recap"></div>
-        <p class="sim">Maquette&nbsp;: l’envoi est simulé, aucune donnée n’est transmise.</p>
+        <p class="sim">Maquette : l’envoi est simulé, aucune donnée n’est transmise.</p>
         <div class="panel__nav"><button class="btn btn--ghost" type="button" data-prev>Modifier</button><button class="btn" type="submit">Envoyer la demande <svg class="arr" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10h12M11 5l5 5-5 5"/></svg></button></div>
       </div>
 
@@ -106,7 +105,7 @@
         <figure class="slot " data-slot="rdv-confirmation" data-variant="tray" data-seed="18" data-alt="Téléphone réparé posé dans un bac, prêt à être récupéré"></figure>
         <h2>Demande prête</h2>
         <p id="done-txt" class="muted"></p>
-        <p class="sim">Simulation&nbsp;: dans la version en ligne, NEXIO recevra cette demande et la confirmera.</p>
+        <p class="sim">Simulation : dans la version en ligne, NEXIO recevra cette demande et la confirmera.</p>
         <div class="cta-row"><a class="btn" href="index.html">Retour à l’accueil</a><button class="btn btn--ghost" type="button" id="again">Nouvelle demande</button></div>
       </div>
     </form>
@@ -143,9 +142,9 @@
         <li><a class="link" href="rendez-vous.html">Prendre rendez-vous</a></li>
       </ul></div>
       <div class="foot__col"><h3>Contact</h3><ul>
-        <li>Téléphone&nbsp;: <span data-fact="telephone"></span></li>
-        <li>E-mail&nbsp;: <span data-fact="email"></span></li>
-        <li>Adresse&nbsp;: <span data-fact="adresse"></span></li>
+        <li>Téléphone : <span data-fact="telephone"></span></li>
+        <li>E-mail : <span data-fact="email"></span></li>
+        <li>Adresse : <span data-fact="adresse"></span></li>
       </ul></div>
       <div class="foot__col"><h3>Informations</h3><ul>
         <li><a class="link" href="mentions-legales.html">Mentions légales</a></li>

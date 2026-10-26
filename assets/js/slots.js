@@ -3,9 +3,6 @@
 import { rng, makeCracks } from './cracks.js';
 
 const IMG = 'assets/img/';
-// Noms des visuels réellement présents dans assets/img/ (fichiers <nom>-800.webp et <nom>-1600.webp).
-// Ajouter ici chaque nom livré : sans cela, l'emplacement garde son visuel provisoire, sans requête en erreur.
-const DISPONIBLES = new Set([]);
 const CY = [57, 233, 247];
 const rgba = (c, a) => `rgba(${c[0]},${c[1]},${c[2]},${a})`;
 
@@ -18,9 +15,8 @@ export function initSlots(root = document) {
     const sizes = fig.dataset.sizes || '100vw';
     const inner = document.createElement('div');
     inner.className = 'slot__inner';
-    if (!DISPONIBLES.has(name)) { fig.prepend(inner); provisional(fig, inner); return; }
     const pic = document.createElement('picture');
-    if (mob && DISPONIBLES.has(mob)) {
+    if (mob) {
       const so = document.createElement('source');
       so.media = '(max-width: 700px)';
       so.srcset = `${IMG}${mob}-800.webp 800w, ${IMG}${mob}-1600.webp 1600w`;
@@ -46,8 +42,8 @@ function provisional(fig, inner) {
   fig.classList.add('is-provisional');
   const c = document.createElement('canvas');
   c.className = 'slot__canvas';
-  if (fig.classList.contains('slot--bg') || !fig.dataset.alt) c.setAttribute('aria-hidden', 'true');
-  else { c.setAttribute('role', 'img'); c.setAttribute('aria-label', fig.dataset.alt + ' (visuel provisoire)'); }
+  c.setAttribute('role', 'img');
+  c.setAttribute('aria-label', (fig.dataset.alt || 'Visuel') + ' (visuel provisoire)');
   inner.appendChild(c);
   if (!fig.querySelector('.slot__tag')) {
     const t = document.createElement('span');
