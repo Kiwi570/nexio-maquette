@@ -1,7 +1,7 @@
 /* NEXIO — comportements communs à toutes les pages */
 import { Lenis } from '../vendor/lenis/lenis.js';
-import { initSlots } from './slots.js?v=20261028';
-import { NEXIO, JOURS, ouverture } from './data.js?v=20261028';
+import { initSlots } from './slots.js?v=20261028-2';
+import { NEXIO, JOURS, ouverture } from './data.js?v=20261028-2';
 
 export const gsap = window.gsap;
 export const ScrollTrigger = window.ScrollTrigger;
@@ -283,6 +283,44 @@ function reveals() {
   });
 }
 
+/* ---------- Hauteurs mesurées : en-tête et barre du bas ---------- */
+function measure(el, prop) {
+  if (!el) return;
+  const set = () => html.style.setProperty(prop, el.offsetHeight + 'px');
+  new ResizeObserver(set).observe(el); set();
+}
+
+/* ---------- Barre d'actions du bas (téléphone) ---------- */
+// uniquement des actions déjà présentes sur le site ; « Appeler » n'apparaît qu'une fois le numéro renseigné
+function dock() {
+  const page = document.body.dataset.page;
+  if (page === 'introuvable' || page === 'rdv') return;
+  const links = [];
+  if (page !== 'estimation') links.push('<a class="btn btn--ghost" href="estimation.html">Estimer</a>');
+  if (NEXIO.telephone) links.push(`<a class="btn btn--ghost" href="tel:${String(NEXIO.telephone).replace(/[^\d+]/g, '')}">Appeler</a>`);
+  links.push('<a class="btn" href="rendez-vous.html">Prendre RDV</a>');
+  const bar = document.createElement('nav');
+  bar.className = 'dock'; bar.setAttribute('aria-label', 'Actions rapides');
+  bar.innerHTML = links.join('');
+  document.body.append(bar);
+  measure(bar, '--barres-h');
+  // visible une fois l'ouverture dépassée, masquée tant qu'un formulaire ou le pied de page est à l'écran
+  const hero = document.querySelector('main > section');
+  const hide = [...document.querySelectorAll('main form, .site-footer')];
+  const seen = new Set();
+  let past = !hero;
+  const update = () => bar.classList.toggle('is-on', past && !seen.size);
+  const io = new IntersectionObserver(es => {
+    es.forEach(e => {
+      if (e.target === hero) past = !e.isIntersecting && e.boundingClientRect.top < 0;
+      else if (e.isIntersecting) seen.add(e.target); else seen.delete(e.target);
+    });
+    update();
+  });
+  if (hero) io.observe(hero);
+  hide.forEach(el => io.observe(el));
+}
+
 /* ---------- Transitions de page (balayage d'écran) ---------- */
 function transitions() {
   const veil = document.querySelector('.veil');
@@ -322,6 +360,8 @@ export function boot() {
   anchors();
   fillFacts();
   header();
+  measure(document.querySelector('.site-header'), '--entete-h');
+  dock();
   calmToggle();
   cursor();
   magnetic();

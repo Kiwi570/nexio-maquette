@@ -1,6 +1,6 @@
 /* Emplacements d'images : l'image WebP est chargée si elle existe dans assets/img/,
    sinon un visuel provisoire est dessiné en code (jamais de cadre vide). */
-import { rng, makeCracks } from './cracks.js?v=20261028';
+import { rng, makeCracks } from './cracks.js?v=20261028-2';
 
 const IMG = 'assets/img/';
 // Noms des visuels réellement présents dans assets/img/ (fichiers <nom>-800.webp et <nom>-1600.webp).

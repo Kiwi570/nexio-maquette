@@ -1,6 +1,6 @@
 /* NEXIO — page Rendez-vous (prise de rendez-vous simulée) */
-import { gsap, boot, calm, veilOut, glitchIn, scrollToEl } from './main.js?v=20261028';
-import { NEXIO, JOURS, MARQUES, PANNES, PIECES, creneaux } from './data.js?v=20261028';
+import { gsap, boot, calm, veilOut, glitchIn, scrollToEl } from './main.js?v=20261028-2';
+import { NEXIO, JOURS, MARQUES, PANNES, PIECES, creneaux } from './data.js?v=20261028-2';
 
 boot();
 

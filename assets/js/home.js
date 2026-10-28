@@ -1,7 +1,7 @@
 /* NEXIO — accueil */
-import { gsap, ScrollTrigger, boot, calm, fine, veilOut, glitchIn, scrollToEl } from './main.js?v=20261028';
-import { MARQUES, AUTRES_MARQUES, PANNES, prix, euros } from './data.js?v=20261028';
-import { makeCracks, crackPaths } from './cracks.js?v=20261028';
+import { gsap, ScrollTrigger, boot, calm, fine, veilOut, glitchIn, scrollToEl } from './main.js?v=20261028-2';
+import { MARQUES, AUTRES_MARQUES, PANNES, prix, euros } from './data.js?v=20261028-2';
+import { makeCracks, crackPaths } from './cracks.js?v=20261028-2';
 
 boot();
 
@@ -24,7 +24,7 @@ let painted = 0;
 
 async function startPhone() {
   try {
-    const m = await import('./phone3d.js?v=20261028');
+    const m = await import('./phone3d.js?v=20261028-2');
     if (!m.webglOK()) throw new Error('webgl');
     phone = m.createPhone(canvas, { mode: 'hero', calm, onPaint: v => { painted = v; } });
   } catch (e) {

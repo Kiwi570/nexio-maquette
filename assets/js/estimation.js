@@ -1,6 +1,6 @@
 /* NEXIO — page Estimation : radiographie + calculateur */
-import { gsap, boot, calm, fine, veilOut, glitchIn } from './main.js?v=20261028';
-import { NEXIO, MARQUES, AUTRES_MARQUES, PANNES, PIECES, prix, total, euros } from './data.js?v=20261028';
+import { gsap, boot, calm, fine, veilOut, glitchIn } from './main.js?v=20261028-2';
+import { NEXIO, MARQUES, AUTRES_MARQUES, PANNES, PIECES, prix, total, euros } from './data.js?v=20261028-2';
 
 boot();
 
@@ -51,7 +51,7 @@ const partName = $('#part-name');
 async function startXray() {
   const canvas = $('#xray');
   try {
-    const m = await import('./phone3d.js?v=20261028');
+    const m = await import('./phone3d.js?v=20261028-2');
     if (!m.webglOK()) throw new Error('webgl');
     phone = m.createPhone(canvas, { mode: 'xray', calm });
   } catch (e) {
