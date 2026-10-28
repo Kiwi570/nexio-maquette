@@ -1,5 +1,5 @@
 /* NEXIO — pages simples (mentions légales) */
-import { gsap, boot, calm, veilOut, glitchIn } from './main.js';
+import { gsap, boot, calm, veilOut, glitchIn } from './main.js?v=20261028';
 
 boot();
 const html = document.documentElement;

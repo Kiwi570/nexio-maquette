@@ -4,7 +4,7 @@
 import * as THREE from '../vendor/three/three.module.min.js';
 import { RoundedBoxGeometry } from '../vendor/three/RoundedBoxGeometry.js';
 import { RoomEnvironment } from '../vendor/three/RoomEnvironment.js';
-import { makeCracks, crackCanvas } from './cracks.js';
+import { makeCracks, crackCanvas } from './cracks.js?v=20261028';
 
 const PW = 1.0, PH = 2.08, PD = 0.1, PR = 0.14;
 const SW = 0.93, SH = 2.01;

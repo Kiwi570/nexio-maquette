@@ -1,7 +1,7 @@
 /* NEXIO — comportements communs à toutes les pages */
 import { Lenis } from '../vendor/lenis/lenis.js';
-import { initSlots } from './slots.js';
-import { NEXIO, JOURS, ouverture } from './data.js';
+import { initSlots } from './slots.js?v=20261028';
+import { NEXIO, JOURS, ouverture } from './data.js?v=20261028';
 
 export const gsap = window.gsap;
 export const ScrollTrigger = window.ScrollTrigger;
